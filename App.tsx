@@ -9,11 +9,10 @@ import ApiQuotaDialog from './components/ApiQuotaDialog';
 import { UserInput, AnalysisResult, Language, BaZiResult } from './types';
 import { calculateBaZi, generateDestinyAnalysis } from './services/geminiService';
 import { Sparkles, Languages, Moon, Sun } from 'lucide-react';
-import { Github } from 'lucide-react';
 import { getTexts } from './locales';
 
 const App: React.FC = () => {
-  const [step, setStep] = useState<'landing' | 'input' | 'confirmation' | 'result'>('landing');
+  const [step, setStep] = useState<'landing' | 'input' | 'confirmation' | 'result'>('input');
   const [loading, setLoading] = useState(false);
   const [showQuotaDialog, setShowQuotaDialog] = useState(false);
 
@@ -89,7 +88,7 @@ const App: React.FC = () => {
   };
 
   const handleReset = () => {
-    setStep('landing');
+    setStep('input');
     setPreliminaryBaZi(null);
     setAnalysis(null);
     window.scrollTo(0, 0);
@@ -118,29 +117,6 @@ const App: React.FC = () => {
             </div>
 
             <div className="flex items-center gap-3">
-               {/* VeeverseAI Logo */}
-               <a
-                  href="https://veeverseai.cn/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="px-3 py-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-gray-200 hover:text-white text-xs font-semibold transition-all flex items-center gap-1.5 border border-slate-700 hover:border-teal-500/50"
-                  title="Visit VeeverseAI"
-               >
-                  <span className="text-teal-400">V</span>
-                  <span className="hidden sm:inline">eeverseAI</span>
-               </a>
-
-               {/* GitHub Link */}
-               <a
-                  href="https://github.com/XIAOEEN/lifeline-k-"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="p-2 rounded-full bg-slate-800 text-gray-300 hover:bg-slate-700 transition-colors"
-                  title="View on GitHub"
-               >
-                  <Github size={16} />
-               </a>
-
                {/* Theme Toggle */}
                <button
                   onClick={toggleTheme}
@@ -184,29 +160,6 @@ const App: React.FC = () => {
           </div>
           
           <div className="flex items-center gap-2 sm:gap-3">
-             {/* VeeverseAI Logo */}
-             <a
-                href="https://veeverseai.cn/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="px-3 py-1.5 rounded-lg bg-gray-100 dark:bg-slate-700 hover:bg-gray-200 dark:hover:bg-slate-600 text-gray-700 dark:text-gray-200 hover:text-gray-900 dark:hover:text-white text-xs font-semibold transition-all flex items-center gap-1.5 border border-gray-200 dark:border-slate-600 hover:border-purple-500/50 dark:hover:border-purple-500/50"
-                title="Visit VeeverseAI"
-             >
-                <span className="text-purple-600 dark:text-purple-400">V</span>
-                <span className="hidden sm:inline">eeverseAI</span>
-             </a>
-
-             {/* GitHub Link */}
-             <a
-                href="https://github.com/XIAOEEN/lifeline-k-"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="p-2 rounded-full bg-gray-100 dark:bg-slate-700 text-gray-600 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-slate-600 transition-colors"
-                title="View on GitHub"
-             >
-                <Github size={16} />
-             </a>
-
              {/* Theme Toggle */}
              <button
                 onClick={toggleTheme}

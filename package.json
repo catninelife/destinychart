@@ -22,7 +22,8 @@
     "@google/generative-ai": "^0.24.1",
     "react": "^18.3.1",
     "html2canvas": "1.4.1",
-    "jspdf": "2.5.1"
+    "jspdf": "2.5.1",
+    "lunar-javascript": "^1.6.7"
   },
   "devDependencies": {
     "@types/node": "^22.14.0",

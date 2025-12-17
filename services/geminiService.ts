@@ -1,6 +1,7 @@
 import OpenAI from "openai";
 import { GoogleGenerativeAI, SchemaType } from "@google/generative-ai";
 import { UserInput, AnalysisResult, Language, BaZiResult } from "../types";
+import { calculateBaZiLocal } from "./baziCalculator";
 
 // API 配置 (直接设置用于 GitHub Pages 部署)
 const apiKey = "sk-ZbE6EjH2HjouLCRhlG9s89oVmQYsigctgllLOcMCkGW9dwQF";  // TODO: 替换为你的 Gemini API Key
@@ -195,77 +196,15 @@ IMPORTANT: The timeline array must contain EXACTLY 100 entries.
 `;
 
 // ------------------------------------------------------------------
-// 1. Calculate BaZi (Preliminary Step)
+// 1. Calculate BaZi (使用本地 lunar-javascript 库计算，更准确)
 // ------------------------------------------------------------------
 
 export const calculateBaZi = async (input: UserInput): Promise<BaZiResult> => {
-  const prompt = `
-    You are an expert in Traditional Chinese BaZi (Four Pillars).
-
-    Calculate the BaZi chart for:
-    Date: ${input.birthDate}
-    Clock Time: ${input.birthTime}
-    Location: ${input.birthLocation} (Use this to calculate True Solar Time deviation from UTC/Standard time)
-    Gender: ${input.gender}
-
-    1. Calculate True Solar Time (真太阳时).
-    2. Convert the date to Chinese Lunar Date (农历).
-    3. Arrange the Year, Month, Day, and Hour pillars accurately based on Solar Time.
-    4. Calculate the Start Age (起运岁数) and Direction (Forward/Backward).
-    5. List the first 10 Big Luck (Da Yun) pillars.
-
-    ${useNativeGemini ? 'Return JSON only.' : baziCalculationSchemaPrompt}
-  `;
-
   try {
-    let text: string | null = null;
-
-    if (useNativeGemini && genAI) {
-      // 使用原生 Gemini API
-      const model = genAI.getGenerativeModel({
-        model: modelId,
-        generationConfig: {
-          responseMimeType: "application/json",
-          responseSchema: baziCalculationSchema,
-        },
-      });
-
-      const result = await model.generateContent(prompt);
-      const response = result.response;
-      text = response.text();
-    } else if (openai) {
-      // 使用第三方转发平台
-      const response = await openai.chat.completions.create({
-        model: modelId,
-        messages: [
-          {
-            role: "user",
-            content: prompt,
-          },
-        ],
-        response_format: { type: "json_object" },
-        temperature: 0.7,
-      });
-
-      text = response.choices[0]?.message?.content || null;
-    }
-
-    if (text) {
-      const data = JSON.parse(text);
-      return {
-        ...data,
-        userInput: input
-      };
-    }
-    throw new Error("Failed to calculate BaZi");
+    // 使用本地计算，不再依赖 AI
+    return calculateBaZiLocal(input);
   } catch (error: any) {
-    console.error("Gemini BaZi Calc Error:", error);
-
-    // Check if it's a quota exhausted error
-    if (isQuotaExhaustedError(error)) {
-      throw new Error("QUOTA_EXHAUSTED");
-    }
-
+    console.error("BaZi Calculation Error:", error);
     throw error;
   }
 };
