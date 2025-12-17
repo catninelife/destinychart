@@ -1,4 +1,4 @@
-import { Lunar, Solar } from 'lunar-javascript';
+import { Lunar } from 'lunar-javascript';
 import { UserInput, BaZiResult, BaZiChart, Gender } from '../types';
 
 // 城市经度映射（用于真太阳时计算）
@@ -179,9 +179,8 @@ export function calculateBaZiLocal(input: UserInput): BaZiResult {
     input.birthLocation
   );
 
-  // 使用 lunar-javascript 库
-  const solar = Solar.fromDate(adjustedDate);
-  const lunar = solar.getLunar();
+  // 使用 lunar-javascript 库 - 直接使用 Lunar.fromDate
+  const lunar = Lunar.fromDate(adjustedDate);
   const eightChar = lunar.getEightChar();
 
   // 获取八字四柱
@@ -208,7 +207,8 @@ export function calculateBaZiLocal(input: UserInput): BaZiResult {
   const lunarYear = lunar.getYearInChinese();
   const lunarMonth = lunar.getMonthInChinese();
   const lunarDay = lunar.getDayInChinese();
-  const lunarDate = `${lunarYear}年${lunar.isLeap() ? '闰' : ''}${lunarMonth}月${lunarDay}`;
+  const isLeapMonth = lunar.getMonth() < 0; // 负数表示闰月
+  const lunarDate = `${lunarYear}年${isLeapMonth ? '闰' : ''}${lunarMonth}月${lunarDay}`;
 
   // 计算大运
   const isMale = input.gender === Gender.MALE;
