@@ -36,7 +36,7 @@ export const translations = {
     overviewTitle: "Destiny Overview",
     
     // New Section Titles
-    cryptoTitle: "Crypto & Web3 Trading",
+    cryptoTitle: "Investment Fortune",
     personalityTitle: "Personality Analysis",
     careerTitle: "Career & Industry",
     fengShuiTitle: "Development Feng Shui",
