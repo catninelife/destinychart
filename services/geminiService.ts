@@ -4,9 +4,12 @@ import { UserInput, AnalysisResult, Language, BaZiResult } from "../types";
 import { calculateBaZiLocal } from "./baziCalculator";
 
 // API 配置 (直接设置用于 GitHub Pages 部署)
-const apiKey = "sk-ZbE6EjH2HjouLCRhlG9s89oVmQYsigctgllLOcMCkGW9dwQF";  // TODO: 替换为你的 Gemini API Key
-const baseURL = "https://max.openai365.top/v1";  // 留空使用原生 Gemini API
-const modelId = "gemini-3-pro-preview-thinking";
+//const apiKey = "sk-ZbE6EjH2HjouLCRhlG9s89oVmQYsigctgllLOcMCkGW9dwQF";  // TODO: 替换为你的 Gemini API Key
+//const baseURL = "https://max.openai365.top/v1";  // 留空使用原生 Gemini API
+//const modelId = "gemini-3-pro-preview-thinking";
+const apiKey = "sk-TobivKUhfAt7nJQluy9tcZyPhlYtH0gZt5DIpgUR80qSoOIb";  // TODO: 替换为你的 Gemini API Key
+const baseURL = "https://api.qingyuntop.top/v1";  // 留空使用原生 Gemini API
+const modelId = "gemini-3-flash-preview";
 
 // 判断使用哪种 API 模式
 const useNativeGemini = !baseURL; // 如果 baseURL 为空，使用原生 Gemini API
