@@ -104,7 +104,7 @@ export const translations = {
     overviewTitle: "命运总览",
     
     // New Section Titles
-    cryptoTitle: "币圈与Web3交易运势",
+    cryptoTitle: "机遇运势",
     personalityTitle: "性格分析",
     careerTitle: "事业与行业",
     fengShuiTitle: "发展风水建议",
