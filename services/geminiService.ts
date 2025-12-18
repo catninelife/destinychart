@@ -154,7 +154,7 @@ Return ONLY valid JSON matching this exact schema (no markdown, no code blocks):
   "mainAttribute": "string - e.g., 'Weak Fire', 'Strong Metal'",
   "generalComment": "string - A summary of the life destiny",
   "cryptoFortune": {
-    "content": "string - Analysis of crypto/trading fortune",
+    "content": "string - Analysis of investment and financial fortune",
     "rating": "integer - Rating from 1 to 10"
   },
   "personality": {
@@ -255,7 +255,7 @@ export const generateDestinyAnalysis = async (confirmedBaZi: BaZiResult, lang: L
        - Create realistic volatility. Do not make all years green.
 
     3. Provide structured analysis for the following sections with a 1-10 rating:
-       - Opportunity & Timing (机遇运势)
+       - Investment Fortune (投资理财运)
        - Personality Analysis (性格分析)
        - Career/Industry (事业行业)
        - Development Feng Shui (发展风水)
