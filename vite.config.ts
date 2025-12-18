@@ -7,7 +7,7 @@ import { join } from 'path';
 export default defineConfig(({ mode }) => {
     const env = loadEnv(mode, '.', '');
     return {
-      base: '/destinychart/',
+      base: '/',
       server: {
         port: 3003,
         host: '0.0.0.0',
