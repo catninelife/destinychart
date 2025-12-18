@@ -140,10 +140,10 @@ const KLineChart: React.FC<KLineChartProps> = ({ data, volatilityAnalysis, lang,
             </div>
             <div className="flex items-center gap-4 text-xs font-mono">
                 <div className="flex items-center gap-1 text-gray-600 dark:text-gray-400">
-                    <div className="w-3 h-3 bg-green-500 rounded-sm"></div> {t.bullMarket}
+                    <div className="w-3 h-3 bg-red-500 rounded-sm"></div> {t.bullMarket}
                 </div>
                 <div className="flex items-center gap-1 text-gray-600 dark:text-gray-400">
-                    <div className="w-3 h-3 bg-red-500 rounded-sm"></div> {t.bearMarket}
+                    <div className="w-3 h-3 bg-green-500 rounded-sm"></div> {t.bearMarket}
                 </div>
             </div>
         </div>
