@@ -255,7 +255,7 @@ export const generateDestinyAnalysis = async (confirmedBaZi: BaZiResult, lang: L
        - Create realistic volatility. Do not make all years green.
 
     3. Provide structured analysis for the following sections with a 1-10 rating:
-       - Crypto/Web3 Trading Luck (币圈交易运势)
+       - Opportunity & Timing (机遇运势)
        - Personality Analysis (性格分析)
        - Career/Industry (事业行业)
        - Development Feng Shui (发展风水)
